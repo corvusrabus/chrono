@@ -116,7 +116,7 @@ impl Duration {
 
     /// Makes a new `Duration` with given number of milliseconds.
     #[inline]
-    pub fn milliseconds(milliseconds: i64) -> Duration {
+    pub const fn milliseconds(milliseconds: i64) -> Duration {
         let (secs, millis) = div_mod_floor_64(milliseconds, MILLIS_PER_SEC);
         let nanos = millis as i32 * NANOS_PER_MILLI;
         Duration { secs: secs, nanos: nanos }
@@ -124,7 +124,7 @@ impl Duration {
 
     /// Makes a new `Duration` with given number of microseconds.
     #[inline]
-    pub fn microseconds(microseconds: i64) -> Duration {
+    pub const fn microseconds(microseconds: i64) -> Duration {
         let (secs, micros) = div_mod_floor_64(microseconds, MICROS_PER_SEC);
         let nanos = micros as i32 * NANOS_PER_MICRO;
         Duration { secs: secs, nanos: nanos }
@@ -132,7 +132,7 @@ impl Duration {
 
     /// Makes a new `Duration` with given number of nanoseconds.
     #[inline]
-    pub fn nanoseconds(nanos: i64) -> Duration {
+    pub const fn nanoseconds(nanos: i64) -> Duration {
         let (secs, nanos) = div_mod_floor_64(nanos, NANOS_PER_SEC as i64);
         Duration { secs: secs, nanos: nanos as i32 }
     }
